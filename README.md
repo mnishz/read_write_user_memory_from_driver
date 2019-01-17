@@ -7,6 +7,6 @@ $ git clone https://github.com/mnishz/read_write_user_memory_from_driver.git
 $ cd read\_write\_user\_memory\_from\_driver  
 $ make  
 $ sudo insmod foobar.ko  
-$ sudo ./a.out  
-$ sudo ./b.out (in another console)  
+$ sudo ./user_proc_A  
+$ sudo ./user_proc_B (in another console)  
 $ sudo rmmod foobar  

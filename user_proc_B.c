@@ -16,7 +16,7 @@ int main(void)
         goto open_error_handler;
     }
 
-    if (ioctl(fd, USER_APP_B) == -1) {
+    if (ioctl(fd, USER_PROC_B) == -1) {
         perror("ioctl: ");
         returnValue = 1;
         goto ioctl_error_handler;

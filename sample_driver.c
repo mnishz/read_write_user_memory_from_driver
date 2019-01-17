@@ -32,8 +32,8 @@ static long sample_driver_ioctl(struct file* const file, unsigned int const cmd,
     static int* userDataPtr = NULL;
 
     switch (cmd) {
-        case USER_APP_A:
-            printk("ioctl USER_APP_A\n");
+        case USER_PROC_A:
+            printk("ioctl USER_PROC_A\n");
             {
                 uintptr_t userDataPhysAddr;
                 if (copy_from_user(&userDataPhysAddr, (void __user*)arg, sizeof(userDataPhysAddr)) != 0) {
@@ -42,8 +42,8 @@ static long sample_driver_ioctl(struct file* const file, unsigned int const cmd,
                 userDataPtr = (int*)ioremap_cache(userDataPhysAddr, sizeof(*userDataPtr));
             }
             break;
-        case USER_APP_B:
-            printk("ioctl USER_APP_B\n");
+        case USER_PROC_B:
+            printk("ioctl USER_PROC_B\n");
             if (userDataPtr != NULL) {
                 ++(*userDataPtr);
                 iounmap(userDataPtr);

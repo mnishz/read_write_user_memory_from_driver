@@ -43,7 +43,7 @@ int main(void)
         goto open_error_handler;
     }
 
-    if (ioctl(fd, USER_APP_A, &physAddr) == -1) {
+    if (ioctl(fd, USER_PROC_A, &physAddr) == -1) {
         perror("ioctl: ");
         returnValue = 1;
         goto ioctl_error_handler;
@@ -81,7 +81,7 @@ uintptr_t GetPhysicalAddress(uintptr_t const virtualAddress)
                 if (virtPageEntry & (1ull << 63)) {
                     physAddr = virtPageEntry & ((1ull << 54) - 1);
                     if (physAddr == 0) {
-                        printf("CAP_SYS_ADMIN is required. This app must be executed by root.\n");
+                        printf("CAP_SYS_ADMIN is required. This proc must be executed by root.\n");
                     } else {
                         physAddr = physAddr * sysconf(_SC_PAGESIZE);
                         physAddr = physAddr | (virtualAddress & (sysconf(_SC_PAGESIZE) - 1));
